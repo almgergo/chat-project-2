@@ -1,3 +1,26 @@
-<p>
-  filter-main works!
-</p>
+<div class="container">
+  <h2 translate>Filters</h2>
+
+  <div class="panel">
+    <form (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-4 form-group">
+          <!-- <input type="text" class="form-control" id="interestInput" placeholder="Interest" [(ngModel)]="filter.interest" name="interest"> -->
+          <input id="interestInput" type="text" class="form-control" placeholder="Interest" [(ngModel)]="filter.interest" name="interest" [ngbTypeahead]="search"/>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 form-group">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Your gender</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item" *ngFor="let gender of genders" [(ngModel)]="filter.myGender" name="myGender" ngDefaultControl>{{gender}}</button>
+            </div>
+          </div>
+          <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel" (ngModelChange)="onSelectChange($event)" name="preferredGenders"></ss-multiselect-dropdown>
+        </div>
+
+      </div>
+    </form>
+  </div>
+
+</div>

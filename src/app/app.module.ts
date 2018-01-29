@@ -10,6 +10,9 @@ import { CommonsModule } from './commons/commons.module';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +23,9 @@ import { AppRoutingModule } from './app-routing.module';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     CommonsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
