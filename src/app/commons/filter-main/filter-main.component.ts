@@ -1,72 +1,85 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FilterDto } from '../model/filter-dto';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Gender } from '../model/gender.enum';
-import { IMultiSelectOption } from 'angular-2-dropdown-multiselect';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/merge';
-
-const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+import { NgbDropdown, NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Subject } from 'rxjs/Subject';
+import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { MenuItem } from '../model/menu-item';
 
 @Component({
   selector: 'app-filter-main',
   templateUrl: './filter-main.component.html',
-  styleUrls: ['./filter-main.component.css']
+  styleUrls: ['./filter-main.component.css'],
+  providers: [NgbDropdownConfig],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [   // :enter is alias to 'void => *'
+        style({opacity:0}),
+        animate(500, style({opacity:1})) 
+      ]),
+      transition(':leave', [   // :leave is alias to '* => void'
+        animate(500, style({opacity:0})) 
+      ])
+    ])
+  ]
+
 })
 export class FilterMainComponent implements OnInit{
-  submitted = false;
+  filter: FilterDto = new FilterDto(20); 
 
-  filter: FilterDto = new FilterDto();
-  genders: string[] = [];
+ 
+  userMenuItem: MenuItem = new MenuItem('user', false);
+  targetMenuItem: MenuItem = new MenuItem('target', false);
 
-  optionsModel: number[];
-  myOptions: IMultiSelectOption[];
+  @ViewChild('userDrop') userDropdown: NgbDropdown;
+  @ViewChild('targetDrop') targetDropdown: NgbDropdown;
 
-  public model: any;
+  menu: { [id: string]: boolean;} = { };
+  // menu: MenuItem[] = [new MenuItem(this.userDrop, false), new MenuItem(this.targetDrop, false)];
 
-  search = (text$: Observable<string>) =>
-    text$
-      .debounceTime(200)
-      .distinctUntilChanged()
-      // .merge() // for later
-      .map(term => term.length < 2 ? []
-        : states.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
-
-  onSelectChange() {
-      console.log(this.optionsModel);
-  }
+  termTarget$ = new Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>();
+  termUser$ = new Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>();
 
   constructor() {
-    this.genders = this.enumValues(Gender);
+    
+    
+    this.termTarget$
+    .debounceTime(200)
+    .subscribe(dropdownItem => {
+      if (!dropdownItem.menuItem.isOpen) {
+        dropdownItem.dropdown.close();
+      }
+    });
+
+    this.termUser$
+    .debounceTime(200)
+    .subscribe(dropdownItem => {
+      if (!dropdownItem.menuItem.isOpen) {
+        dropdownItem.dropdown.close();
+      }
+    });
   }
 
   ngOnInit() {
-    this.myOptions = [
-      { id: 1, name: 'Option 1' },
-      { id: 2, name: 'Option 2' },
-    ];
+    this.userDropdown.autoClose = false;
+    this.targetDropdown.autoClose = false;
   }
 
-  onSubmit() {
-    this.submitted = true;
-    return false;
+  openDropdown(dropdown: NgbDropdown, item: MenuItem) {
+    dropdown.open();
+    item.isOpen = true;
+    console.log(item);
   }
 
-  enumValues(Enum) {
-    return Object.values(Enum);
-    // for (let value in enumValues) {
-    //   console.log(value);
-    // }
+  closeWithDelay(targetDrop: NgbDropdown, item: MenuItem, observableEmitter: Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>) {
+    item.isOpen = false;
+    observableEmitter.next({dropdown: targetDrop, menuItem: item});
   }
 
 }

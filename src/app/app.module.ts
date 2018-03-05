@@ -11,11 +11,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+import { FilterMainComponent } from './commons/filter-main/filter-main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,8 +27,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ModalModule.forRoot(),
     CommonsModule,
     AppRoutingModule,
-    NgbModule.forRoot()
-    
+    NgbModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

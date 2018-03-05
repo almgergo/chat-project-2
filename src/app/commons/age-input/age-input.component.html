@@ -1,0 +1,9 @@
+<input disabled="true" type="number" class="form-control age-input" id="userAge" [(ngModel)]="filter.userAge" #age="ngModel" appMinAge="{{minAge}}"
+    mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" (change)="checkAge()">
+<div *ngIf="age.invalid && (age.dirty || age.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="age && age.errors.minAge">
+    Age can't be less than {{minAge}}
+  </div>
+</div>

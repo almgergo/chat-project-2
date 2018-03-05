@@ -1,0 +1,20 @@
+  <h4 translate class="">Some info about you</h4>
+  <div class="form-group">
+    <div class="form-group ">
+      <label for="exampleInputEmail1">Your age</label>
+      <app-age-input [minAge]="minAge" [filter]="filter"></app-age-input>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div><label>Your gender</label></div>
+
+    <div class="btn-group " ngbDropdown role="group" (mouseenter)="genderDropdownClosed = false; userGenderDropdown.open()" (mouseleave)="genderDropdownClosed = true; termUser$.next(userGenderDropdown)" #userGenderDropdown="ngbDropdown">
+      <button class="btn" id="userGenderDropdown" [ngClass]="{'btn-success': filter.userGender, 'btn-primary': !filter.userGender}" ngbDropdownToggle> {{ filter.userGender ? filter.userGender : 'Your gender' }}</button>
+      <div ngbDropdownMenu aria-labelledby="userGenderDropdown">
+        <!-- <div class=""><h5>Your gender</h5></div> -->
+        <button class="dropdown-item" *ngFor="let gender of genders" (click)="filter.userGender = gender" name="userGender" ngDefaultControl>{{gender}}</button>
+      </div>
+    </div>
+  </div>
+

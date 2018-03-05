@@ -1,0 +1,11 @@
+<h4 translate></h4>
+
+<div ngbDropdownMenu aria-labelledby="partnerGenderDropdown" class="panel">
+  <!-- <div class=""><h5>{{tooltip}}</h5></div> -->
+  <button class="dropdown-item form-check"  *ngFor="let value of values" (click)="toggleValue(value)" style="margin: 0px">
+      <input class="form-check-input" type="checkbox" value="" [checked]="isChecked(value)">
+      <label class="form-check-label" >
+        {{ valueFormatter(value) }}
+      </label>
+  </button>
+</div>

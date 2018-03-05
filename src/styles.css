@@ -1,2 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.dropdown-item.active {
+    color: white;
+    background-color: white;
+}
+
+a span {
+    text-decoration: none;
+}
+
+.panel{
+    margin-bottom:30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:30px;
+}
+
+div.form-group {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
