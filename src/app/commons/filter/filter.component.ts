@@ -14,7 +14,8 @@ import { IonRangeSliderComponent } from 'ng2-ion-range-slider';
 })
 export class FilterComponent implements OnInit {
 
-  minAge = 20;
+  minAge = 10;
+  maxAge = 100;
   submitted = false;
 
   @Input() filter: FilterDto = new FilterDto(20);
@@ -23,11 +24,11 @@ export class FilterComponent implements OnInit {
   genders: any[] = [];
   genderDropdownClosed = true;
 
-  
+
   termTarget$ = new Subject<NgbDropdown>();
 
   constructor(config: NgbDropdownConfig) {
-    config.autoClose=false;
+    config.autoClose = false;
     this.genders = this.enumValues(Gender);
 
     this.termTarget$
@@ -35,7 +36,7 @@ export class FilterComponent implements OnInit {
     .subscribe(dropdown => {
       if (this.genderDropdownClosed) {
         dropdown.close();
-      } 
+      }
     });
   }
 
@@ -64,9 +65,10 @@ export class FilterComponent implements OnInit {
   closeDropdownSoon(userGenderDropdown: NgbDropdown) {
     userGenderDropdown.close();
   }
- 
-  
+
+
   shiftSlider(shift: number) {
     console.log(this.ageSlider);
   }
+
 }

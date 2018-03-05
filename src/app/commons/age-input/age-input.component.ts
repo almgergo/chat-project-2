@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FilterDto } from '../model/filter-dto';
 
 @Component({
@@ -8,34 +8,59 @@ import { FilterDto } from '../model/filter-dto';
 })
 export class AgeInputComponent implements OnInit {
 
-  @Input() minAge: number;
-  @Input() filter: FilterDto;
+  @Input() minAge = 10;
+  @Input() maxAge = 100;
+  age = 20;
+
+  @Output('ageChanged') ageChanged: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+
   mouseWheelUpFunc(event) {
-    if (this.filter.userAge !== undefined) {
-      this.filter.userAge++;
-    } else {
-      this.filter.userAge = this.minAge;
+    if (this.age) {
+      if (this.age >= this.maxAge) {
+        this.age = this.maxAge;
+      } else if (this.age < this.minAge) {
+        this.age = this.minAge;
+      } else {
+        this.age++;
+      }
     }
+
+    this.emitAge();
   }
 
-  mouseWheelDownFunc(event){
-    if (this.filter.userAge !== undefined && this.filter.userAge > this.minAge) {
-      this.filter.userAge--;
-    } else if (this.filter.userAge === undefined){
-      this.filter.userAge = this.minAge;
+  mouseWheelDownFunc(event) {
+    if (this.age) {
+      if (this.age > this.maxAge) {
+        this.age = this.maxAge;
+      } else if (this.age <= this.minAge) {
+        this.age = this.minAge;
+      } else {
+        this.age--;
+      }
+    } else {
+      this.age = 20;
     }
+
+    this.emitAge();
   }
 
   checkAge() {
-    if (this.filter.userAge < this.minAge) {
-      this.filter.userAge = this.minAge;
+    if (this.age < this.minAge) {
+      this.age = this.minAge;
+    } else if (this.age > this.maxAge) {
+      this.age = this.maxAge;
     }
+    this.emitAge();
+  }
+
+  emitAge() {
+    this.ageChanged.emit(this.age);
   }
 
 }

@@ -7,13 +7,13 @@
         <div ngbDropdownMenu aria-labelledby="dropdownUserInfo">
           <div class="card-body">
             <app-user-settings [filter]="filter"></app-user-settings>
-          </div> 
+          </div>
         </div>
       </div>
 
       <div class="col-auto d-inline-block" ngbDropdown #targetDrop="ngbDropdown" (mouseenter)="openDropdown(targetDrop, targetMenuItem)" (mouseleave)=" closeWithDelay(targetDrop, targetMenuItem, termTarget$)">
         <button class="btn btn-outline-success" id="dropdownTargetInfo"  ngbDropdownToggle>Who are you looking for?</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownTargetInfo" style="width: 200%" >
+        <div ngbDropdownMenu aria-labelledby="dropdownTargetInfo" style="width: 160%" >
           <div class="card-body">
             <app-filter [filter]="filter"></app-filter>
           </div>
@@ -22,17 +22,15 @@
     </div>
   </div>
 </div>
-  
+
 <div class="container">
 
-    
 
-  
+
+
   <ng-container *ngIf="showFiltering">
       <div class="card-body">
         <app-filter [filter]="filter"></app-filter>
       </div>
   </ng-container>
 </div>
-
- 

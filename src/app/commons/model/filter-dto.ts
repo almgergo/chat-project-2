@@ -1,4 +1,4 @@
-import { Gender } from "./gender.enum";
+import { Gender } from './gender.enum';
 
 export class FilterDto {
     userInterests?: string[];
@@ -14,3 +14,4 @@ export class FilterDto {
         this.userAge = startAge;
     }
 }
+ 

@@ -1,4 +1,4 @@
-<!-- <div class="col-4 form-group"> 
+<!-- <div class="col-4 form-group">
     <label for="interestInput">Add an interest</label>
     <input id="interestInput" type="text" class="form-control" placeholder="Interest" [(ngModel)]="filter.interest" name="interest" [ngbTypeahead]="search"/>
   </div> -->
@@ -7,17 +7,24 @@
 <form (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit()">
     <!-- User filters -->
 
-  <div class="form-group ">
-    <label for="exampleInputEmail1">Your age</label>
-    <app-age-input [minAge]="minAge" [filter]="filter"></app-age-input>
-  </div>
+  <div class="row">
+    <div class="form-group col">
+      <label for="exampleInputEmail1">Min age</label>
+      <app-age-input [minAge]="minAge" [maxAge]="filter.preferredAgeMax" (ageChanged)="filter.preferredAgeMin = $event"></app-age-input>
+    </div>
+    <div class="form-group col">
+      <label for="exampleInputEmail1">Max age</label>
+      <app-age-input [minAge]="filter.preferredAgeMin" [maxAge]="maxAge" (ageChanged)="filter.preferredAgeMax = $event"></app-age-input>
+    </div>
+    <div class="col"></div>
 
+  </div>
   <div class="form-group">
     <div><label>Gender</label></div>
-      
+
     <div ngbDropdown class="btn-group" role="group" (mouseenter)="genderDropdownClosed = false; targetGenderDropdown.open()" (mouseleave)="genderDropdownClosed = true; termTarget$.next(targetGenderDropdown)" #targetGenderDropdown="ngbDropdown">
-      <button class="btn" 
-      [ngClass]="(filter.preferredGender && filter.preferredGender.length > 0) ? 'btn-success' : 'btn-primary'" 
+      <button class="btn"
+      [ngClass]="(filter.preferredGender && filter.preferredGender.length > 0) ? 'btn-success' : 'btn-primary'"
         id="partnerGenderDropdown" ngbDropdownToggle>
           {{ targetGenderButtonText() }}
       </button>
