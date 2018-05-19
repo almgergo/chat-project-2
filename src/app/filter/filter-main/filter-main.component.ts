@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FilterDto } from '../model/filter-dto';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Gender } from '../model/gender.enum';
@@ -11,6 +11,7 @@ import { NgbDropdown, NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs/Subject';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { MenuItem } from '../model/menu-item';
+import { Topic } from '../../commons/model/topic-dto';
 
 @Component({
   selector: 'app-filter-main',
@@ -33,6 +34,7 @@ import { MenuItem } from '../model/menu-item';
 export class FilterMainComponent implements OnInit {
   filter: FilterDto = new FilterDto(20, 20, 30);
 
+  @Input() topics: Topic[];
 
   userMenuItem: MenuItem = new MenuItem('user', false);
   targetMenuItem: MenuItem = new MenuItem('target', false);
@@ -82,4 +84,7 @@ export class FilterMainComponent implements OnInit {
     observableEmitter.next({dropdown: targetDrop, menuItem: item});
   }
 
+  startSearch() {
+    console.log(this.topics, this.filter);
+  }
 }

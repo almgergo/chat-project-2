@@ -1,21 +1,11 @@
 .split {
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-}
-
-hr {
-    border-color: black;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .topic-enum {
     margin: 0px;
 }
-
-.indented {
-    margin: 20px;
-}
-
 
 span {
     display: inline-block;
@@ -26,4 +16,18 @@ span {
 
 span.span-button:hover {
     transform: scale(1.4);
+}
+
+.highlight-add:hover {
+    background-color: green;
+    color: white;
+    transition: background-color 0.5s;
+    /* transition: font-size 0.5s; */
+}
+
+.highlight-remove:hover {
+    background-color: darkred;
+    color: white;
+    transition: background-color 0.5s;
+
 }

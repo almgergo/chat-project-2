@@ -1,0 +1,7 @@
+<div>
+  <app-chat-tabs [chatTabs]="chatTabs" (activeTab)="changeActiveTab($event)"></app-chat-tabs>
+</div>
+
+<div class="container" *ngIf="activeTab.id > -1">
+  <app-chat-window [chatTab]="activeTab" (sendMessage)="sendMessage($event)"></app-chat-window>
+</div>

@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopicModule } from './topic/topic.module';
 import { FilterModule } from './filter/filter.module';
+import { ChatWindowsModule } from './chat-windows/chat-windows.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FilterModule } from './filter/filter.module';
     AppRoutingModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,
-    FilterModule
+    FilterModule,
+    ChatWindowsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

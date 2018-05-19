@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Topic } from './commons/model/topic-dto';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  topics: Topic[];
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TopicService } from './topic-service';
 import { Observable } from 'rxjs/Observable';
 import { FormControl } from '@angular/forms';
-import { Topic } from '../model/topic-dto';
+import { Topic } from '../../commons/model/topic-dto';
 
 @Component({
   selector: 'app-topic-page',
@@ -17,6 +17,7 @@ export class TopicPageComponent implements OnInit {
 
   searchText = '';
 
+  @Output() topicsChanged: EventEmitter<Topic[]> = new EventEmitter();
 
   filteredInactiveTopics: Topic[] = [];
 
@@ -27,6 +28,7 @@ export class TopicPageComponent implements OnInit {
     this.topicService.getTopics().subscribe(data => {
       this.topics = data;
       this.inactiveTopics = data;
+      this.postProcessTopics();
     });
 
   }
@@ -60,6 +62,7 @@ export class TopicPageComponent implements OnInit {
     this.findInactiveTopics();
     this.filterInactiveTopics();
     this.orderTopics();
+    this.topicsChanged.emit(this.activeTopics);
   }
 
   findInactiveTopics() {
@@ -77,31 +80,25 @@ export class TopicPageComponent implements OnInit {
     this.orderInactiveTopics();
   }
 
+  topicFilter = (it1: Topic, it2: Topic) => {
+    if (it1.searchCount > it2.searchCount) {
+      return -1;
+    }
+
+    if (it1.searchCount < it2.searchCount) {
+      return 1;
+    }
+
+    return 0;
+  }
+
   orderActiveTopics() {
-    this.activeTopics = this.activeTopics.sort((at1, at2) => {
-      if (at1.searchCount > at2.searchCount) {
-        return 1;
-      }
-
-      if (at1.searchCount < at2.searchCount) {
-        return -1;
-      }
-
-      return 0;
-    });
+    this.activeTopics = this.activeTopics.sort((at1, at2) => this.topicFilter(at1, at2));
   }
 
   orderInactiveTopics() {
-    this.inactiveTopics = this.inactiveTopics.sort((it1, it2) => {
-      if (it1.searchCount > it2.searchCount) {
-        return 1;
-      }
-
-      if (it1.searchCount < it2.searchCount) {
-        return -1;
-      }
-
-      return 0;
-    });
+    this.inactiveTopics = this.inactiveTopics.sort((at1, at2) => this.topicFilter(at1, at2));
   }
+
+
 }

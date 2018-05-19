@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item" *ngFor="let chatTab of chatTabs" (click)="selectTab(chatTab)">
+    <a class="nav-link" [ngClass]="{'active': chatTab.active}">{{chatTab.partnerUsername}}</a>
+  </li>
+</ul>

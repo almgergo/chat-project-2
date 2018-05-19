@@ -1,36 +1,25 @@
-<div class="row navbar">
-  <div class="container">
-    <div class="row">
+<div class="d-flex justify-content-start navbar">
 
-      <div class="col-auto d-inline-block" ngbDropdown #userDrop="ngbDropdown" (mouseenter)="openDropdown(userDrop, userMenuItem)" (mouseleave)=" closeWithDelay(userDrop, userMenuItem, termUser$)">
-        <button class="btn btn-outline-success" id="dropdownUserInfo" ngbDropdownToggle>Your information</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownUserInfo">
-          <div class="card-body">
-            <app-user-settings [filter]="filter"></app-user-settings>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-auto d-inline-block" ngbDropdown #targetDrop="ngbDropdown" (mouseenter)="openDropdown(targetDrop, targetMenuItem)" (mouseleave)=" closeWithDelay(targetDrop, targetMenuItem, termTarget$)">
-        <button class="btn btn-outline-success" id="dropdownTargetInfo"  ngbDropdownToggle>Who are you looking for?</button>
-        <div ngbDropdownMenu aria-labelledby="dropdownTargetInfo" style="width: 160%" >
-          <div class="card-body">
-            <app-filter [filter]="filter"></app-filter>
-          </div>
-        </div>
+  <div class="p-2" ngbDropdown #userDrop="ngbDropdown" (mouseenter)="openDropdown(userDrop, userMenuItem)" (mouseleave)=" closeWithDelay(userDrop, userMenuItem, termUser$)">
+    <button class="btn btn-outline-success" id="dropdownUserInfo" ngbDropdownToggle>Your information</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownUserInfo">
+      <div class="card-body">
+        <app-user-settings [filter]="filter"></app-user-settings>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-
-
-
-
-  <ng-container *ngIf="showFiltering">
+  <div class="p-2" ngbDropdown #targetDrop="ngbDropdown" (mouseenter)="openDropdown(targetDrop, targetMenuItem)" (mouseleave)=" closeWithDelay(targetDrop, targetMenuItem, termTarget$)">
+    <button class="btn btn-outline-success" id="dropdownTargetInfo"  ngbDropdownToggle>Who are you looking for?</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownTargetInfo" style="width: 160%" >
       <div class="card-body">
         <app-filter [filter]="filter"></app-filter>
       </div>
-  </ng-container>
+    </div>
+  </div>
+
+  <div class="p-2 ml-auto">
+    <button class="btn btn-success" id="startSearch" (click)="startSearch()">Start search</button>
+  </div>
+
 </div>

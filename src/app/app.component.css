@@ -1,9 +1,29 @@
 /* Split the screen in half */
-.split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
+div.container {
+  margin-top: 5px;
+}
+
+
+div.row>div {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+div.col {
+  border-left: 1px solid black;
+}
+
+div.menu {
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  box-shadow: 10px 10px 8px #888888;
+}
+
+div.content {
+  margin-top: 30px;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  box-shadow:  2px 2px 4px #888888;
+}
