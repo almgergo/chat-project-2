@@ -12,8 +12,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { FilterMainComponent } from './commons/filter-main/filter-main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TopicModule } from './topic/topic.module';
+import { FilterModule } from './filter/filter.module';
 
 
 @NgModule({
@@ -26,9 +27,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     CommonsModule,
+    TopicModule,
     AppRoutingModule,
     NgbModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FilterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

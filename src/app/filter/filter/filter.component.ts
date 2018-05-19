@@ -18,7 +18,7 @@ export class FilterComponent implements OnInit {
   maxAge = 100;
   submitted = false;
 
-  @Input() filter: FilterDto = new FilterDto(20);
+  @Input() filter: FilterDto = new FilterDto(20, 20, 30);
   @ViewChild('sliderElement') ageSlider: IonRangeSliderComponent;
 
   genders: any[] = [];
@@ -30,6 +30,8 @@ export class FilterComponent implements OnInit {
   constructor(config: NgbDropdownConfig) {
     config.autoClose = false;
     this.genders = this.enumValues(Gender);
+
+    console.log(this.filter);
 
     this.termTarget$
     .debounceTime(100)

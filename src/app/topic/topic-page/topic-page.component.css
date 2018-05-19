@@ -1,0 +1,29 @@
+.split {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+hr {
+    border-color: black;
+}
+
+.topic-enum {
+    margin: 0px;
+}
+
+.indented {
+    margin: 20px;
+}
+
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    transition: all .2s ease-in-out;
+}
+
+span.span-button:hover {
+    transform: scale(1.4);
+}

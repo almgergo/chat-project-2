@@ -1,0 +1,38 @@
+<div class="split">
+  <div class="indented">
+    <label for="topic-search" class="topic-enum">Search for a topic:</label>
+    <input id="topic-search" type="search" [formControl]="searchField"
+     placeholder="Gaming, traveling, music..." class="form-control"/>
+  </div>
+
+  <ng-container *ngIf="activeTopics.length > 0">
+  <hr/>
+
+  <div *ngFor="let topic of activeTopics">
+    <div class="row indented form-group">
+      <div class="col-10"><label class="topic-enum col-form-label">{{topic.name}}</label></div>
+      <div class="col-2" >
+        <span class="span-button col-form-label" >
+          <img src="assets/img/X_icon.png"  style="width: 30px" (click)="removeTopic(topic)"/>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  </ng-container>
+  <hr/>
+  <ng-container *ngIf="inactiveTopics.length > 0; else no_inactive_found">
+    <div *ngFor="let topic of inactiveTopics">
+      <div class="row indented form-group">
+        <div class="col-10"><label class="topic-enum col-form-label">{{topic.name}}</label></div>
+        <div class="col-2" >
+          <span class="span-button col-form-label" >
+            <img src="assets/img/plus-button-green.png"  style="width: 30px" (click)="addTopic(topic)" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #no_inactive_found> <div class="indented"  >No topics found...</div> </ng-template>
+</div>

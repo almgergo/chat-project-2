@@ -1,0 +1,2 @@
+<input type="number" class="form-control age-input" id="userAge" [(ngModel)]="age" #ageModel="ngModel" appMinAge="{{minAge}}"
+    mouseWheel (mouseWheelUp)="mouseWheelUpFunc(event)" (mouseWheelDown)="mouseWheelDownFunc(event)" (change)="checkAge()">

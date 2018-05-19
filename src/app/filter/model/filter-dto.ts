@@ -10,8 +10,9 @@ export class FilterDto {
     preferredAgeMin?: number;
     preferredAgeMax?: number;
 
-    constructor(startAge: number) {
+    constructor(startAge: number, min: number, max: number) {
         this.userAge = startAge;
+        this.preferredAgeMax = max;
+        this.preferredAgeMin = min;
     }
 }
- 

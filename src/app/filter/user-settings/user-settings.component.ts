@@ -15,12 +15,12 @@ export class UserSettingsComponent implements OnInit {
   genderDropdownClosed = true;
   minAge = 10;
 
-  @Input() filter: FilterDto = new FilterDto(20);
+  @Input() filter: FilterDto = new FilterDto(20, 20, 30);
 
   genders: any[] = [];
 
   constructor(config: NgbDropdownConfig) {
-    config.autoClose=true;
+    config.autoClose = true;
 
     this.genders = this.enumValues(Gender);
 
@@ -29,7 +29,7 @@ export class UserSettingsComponent implements OnInit {
       .subscribe(dropdown => {
         if (this.genderDropdownClosed) {
           dropdown.close();
-        } 
+        }
       });
 
     this.filter.userAge = 10;
@@ -47,5 +47,5 @@ export class UserSettingsComponent implements OnInit {
     userGenderDropdown.close();
   }
 
-  
+
 }

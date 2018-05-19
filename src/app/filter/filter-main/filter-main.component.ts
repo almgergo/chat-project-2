@@ -9,7 +9,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/merge';
 import { NgbDropdown, NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Subject } from 'rxjs/Subject';
-import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { MenuItem } from '../model/menu-item';
 
 @Component({
@@ -20,35 +20,35 @@ import { MenuItem } from '../model/menu-item';
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [   // :enter is alias to 'void => *'
-        style({opacity:0}),
-        animate(500, style({opacity:1})) 
+        style({opacity: 0}),
+        animate(500, style({opacity: 1}))
       ]),
       transition(':leave', [   // :leave is alias to '* => void'
-        animate(500, style({opacity:0})) 
+        animate(500, style({opacity: 0}))
       ])
     ])
   ]
 
 })
-export class FilterMainComponent implements OnInit{
-  filter: FilterDto = new FilterDto(20); 
+export class FilterMainComponent implements OnInit {
+  filter: FilterDto = new FilterDto(20, 20, 30);
 
- 
+
   userMenuItem: MenuItem = new MenuItem('user', false);
   targetMenuItem: MenuItem = new MenuItem('target', false);
 
   @ViewChild('userDrop') userDropdown: NgbDropdown;
   @ViewChild('targetDrop') targetDropdown: NgbDropdown;
 
-  menu: { [id: string]: boolean;} = { };
+  menu: { [id: string]: boolean; } = { };
   // menu: MenuItem[] = [new MenuItem(this.userDrop, false), new MenuItem(this.targetDrop, false)];
 
   termTarget$ = new Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>();
   termUser$ = new Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>();
 
   constructor() {
-    
-    
+
+
     this.termTarget$
     .debounceTime(200)
     .subscribe(dropdownItem => {

@@ -10,13 +10,19 @@ export class AgeInputComponent implements OnInit {
 
   @Input() minAge = 10;
   @Input() maxAge = 100;
-  age = 20;
+  @Input() startAge = 20;
+
+  age: number;
+
+
 
   @Output('ageChanged') ageChanged: EventEmitter<number> = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.age = this.startAge;
   }
 
 
