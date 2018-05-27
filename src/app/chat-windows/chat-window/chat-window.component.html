@@ -1,4 +1,4 @@
 
 <app-chat-messages [chatMessages]="chatTab.messages"></app-chat-messages>
 
-<app-chat-input></app-chat-input>
+<app-chat-input (messageSent)="addNewMessage($event, true)"></app-chat-input>

@@ -1,7 +1,7 @@
-<div class="container">
-<div *ngFor="let message of chatMessages">
-  <div>
-    <p [ngClass]="{'userMessage': message.isUsers, 'partnerMessage': !message.isUsers}">{{message.body}}</p>
+<div class="container chat-window">
+  <div *ngFor="let message of chatMessages">
+    <div>
+      <p [ngClass]="{'userMessage': message.isUsers, 'partnerMessage': !message.isUsers}">{{message.body}}</p>
+    </div>
   </div>
-</div>
 </div>

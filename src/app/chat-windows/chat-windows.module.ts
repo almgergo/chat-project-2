@@ -7,12 +7,14 @@ import { ChatTabsComponent } from './chat-tabs/chat-tabs.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatMessagesComponent } from './chat-window/chat-messages/chat-messages.component';
 import { ChatInputComponent } from './chat-window/chat-input/chat-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule,
-    CommonsModule
+    CommonsModule,
+    FormsModule
   ],
   declarations: [CockpitComponent, ChatTabsComponent, ChatWindowComponent, ChatMessagesComponent, ChatInputComponent],
   exports: [CockpitComponent]

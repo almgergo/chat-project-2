@@ -15,4 +15,8 @@ export class ChatWindowComponent implements OnInit {
   ngOnInit() {
   }
 
+  addNewMessage(message: string, isUsers: boolean) {
+    this.chatTab.messages.push({body: message, isUsers: isUsers});
+  }
+
 }

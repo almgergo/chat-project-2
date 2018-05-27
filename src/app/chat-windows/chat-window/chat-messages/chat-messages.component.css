@@ -9,3 +9,8 @@ p {
 .partnerMessage{
     text-align: left;
 }
+
+.chat-window {
+    height:500px;
+    /* border: 1px solid lightgrey; */
+}
