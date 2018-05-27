@@ -1,6 +1,10 @@
 .split {
     margin-top:20px;
     margin-bottom: 20px;
+    outline: none;
+    height: 720px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .topic-enum {
@@ -25,9 +29,42 @@ span.span-button:hover {
     /* transition: font-size 0.5s; */
 }
 
+.highlight-add-selected {
+    background-color: green;
+    color: white;
+    transition: background-color 0.5s;
+}
+
 .highlight-remove:hover {
     background-color: darkred;
     color: white;
     transition: background-color 0.5s;
 
+}
+
+.highlight-remove-selected {
+    background-color: darkred;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.topic-form {
+    height: 80px;
+}
+
+.topic-panel {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 550px;
+}
+
+.search-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+@media only screen and (max-width:1050px) {
+    .search-grid {
+        grid-template-columns: 100%;
+    }
 }
