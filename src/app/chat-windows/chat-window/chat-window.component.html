@@ -1,4 +1,5 @@
+<div class="auto-height">
+    <app-chat-messages [chatMessages]="chatTab.messages"></app-chat-messages>
 
-<app-chat-messages [chatMessages]="chatTab.messages"></app-chat-messages>
-
-<app-chat-input (messageSent)="addNewMessage($event, true)"></app-chat-input>
+    <app-chat-input [chatTab]="chatTab" (messageSent)="addNewMessage($event, true)"></app-chat-input>
+</div>

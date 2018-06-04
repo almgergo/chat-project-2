@@ -1,4 +1,4 @@
-<div class="container chat-window">
+<div class="container auto-height">
   <div *ngFor="let message of chatMessages">
     <div>
       <p [ngClass]="{'userMessage': message.isUsers, 'partnerMessage': !message.isUsers}">{{message.body}}</p>

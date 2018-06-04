@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ChatTab } from '../../model/chat-tab';
 
 @Component({
   selector: 'app-chat-input',
@@ -7,17 +8,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ChatInputComponent implements OnInit {
 
+  @Input() chatTab: ChatTab;
   @Output() messageSent: EventEmitter<string> = new EventEmitter();
-  message: string;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.chatTab);
   }
 
   sendMessage() {
-    this.messageSent.emit(this.message);
-    this.message = '';
+    if (this.chatTab.currentMessage !== null && this.chatTab.currentMessage !== '') {
+      this.messageSent.emit(this.chatTab.currentMessage);
+    }
+    this.chatTab.currentMessage = '';
   }
 
 }

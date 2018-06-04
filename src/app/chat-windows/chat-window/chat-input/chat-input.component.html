@@ -1,9 +1,9 @@
 <form>
   <div class="row">
     <div class="col">
-      <input type="text" name="messageInput" class="form-control" id="chatInputText" [(ngModel)]="message" >
+      <input type="text" name="messageInput" class="form-control" id="chatInputText" [(ngModel)]="chatTab.currentMessage" >
     </div>
-    <div class="col-2">
+    <div class="col-auto">
       <button type="submit" class="btn btn-success" style="width: 100%" id="sendMessage" (click)="sendMessage()">Send</button>
     </div>
   </div>

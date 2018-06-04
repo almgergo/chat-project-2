@@ -16,7 +16,7 @@ import { MouseWheelDirective } from './tools/mousewheel.directive';
     // Validators
   ],
   declarations: [ MultiSelectComponent, MinAgeValidatorDirective, MouseWheelDirective],
-  exports: [MultiSelectComponent, MouseWheelDirective, MinAgeValidatorDirective]
+  exports: [MultiSelectComponent, MouseWheelDirective, MinAgeValidatorDirective],
 
 })
 export class CommonsModule { }

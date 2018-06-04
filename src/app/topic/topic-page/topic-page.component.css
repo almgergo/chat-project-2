@@ -1,12 +1,3 @@
-.split {
-    margin-top:20px;
-    margin-bottom: 20px;
-    outline: none;
-    height: 720px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
 .topic-enum {
     margin: 0px;
 }

@@ -1,5 +1,5 @@
 /* Split the screen in half */
-div.containerr {
+div.app-page {
   margin-top: 5px;
   max-width: 1600px;
   margin-left: auto;
@@ -7,7 +7,7 @@ div.containerr {
 }
 
 @media only screen and (max-width: 1600px) {
-  div.containerr {
+  div.app-page {
     margin-right:20px;
     margin-left:20px;
   }
@@ -28,13 +28,4 @@ div.menu {
   border-color: black;
   border-style: solid;
   box-shadow: 10px 10px 8px #888888;
-}
-
-div.content {
-  max-height: 800px;
-  margin-top: 30px;
-  border-width: 1px;
-  border-color: black;
-  border-style: solid;
-  box-shadow:  2px 2px 4px #888888;
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Topic } from './commons/model/topic-dto';
+import { UserService } from './user-service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,8 @@ export class AppComponent {
   title = 'app';
 
   topics: Topic[];
+
+  constructor(private userService: UserService) {
+    this.userService.registerUser();
+  }
 }

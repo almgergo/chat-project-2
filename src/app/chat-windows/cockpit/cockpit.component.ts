@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatTab } from '../model/chat-tab';
+import { UnsyncedMessages } from '../model/unsynced-messages';
 
 @Component({
   selector: 'app-cockpit',
@@ -17,13 +18,13 @@ export class CockpitComponent implements OnInit {
   ngOnInit() {
     this.chatTabs = [
       {id: 0, messages: [
-        {body: 'Szia', isUsers: false},
-        {body: 'Szija', isUsers: true},
-        {body: 'Szija', isUsers: true},
-        {body: 'Szija', isUsers: true},
-        {body: 'Szija', isUsers: true}
-      ], partnerUsername: 'Béla', active: true},
-      {id: 1, messages: [], partnerUsername: 'János', active: false}
+        {body: 'Szia', isUsers: false, time: Date.now() - 10000},
+        {body: 'Szija', isUsers: true, time: Date.now() - 9000},
+        {body: 'Szija', isUsers: true, time: Date.now() - 8000},
+        {body: 'Szija', isUsers: true, time: Date.now() - 5000},
+        {body: 'Szija', isUsers: true, time: Date.now() - 1000}
+      ], partnerUsername: 'Béla', active: true, partnerId: 1, currentMessage: 'asdn'},
+      {id: 1, messages: [], partnerUsername: 'János', active: false, partnerId: 2, currentMessage: 'fuoff'}
     ];
     this.activeTab = this.chatTabs[0];
     // this.chatTabs = [];
@@ -34,7 +35,8 @@ export class CockpitComponent implements OnInit {
     console.log(this.activeTab.partnerUsername);
   }
 
-  sendMessage(message: string) {
-    console.log(message);
+  sendMessage(unsyncedMessages: UnsyncedMessages) {
+    console.log(this.activeTab.partnerId, ...unsyncedMessages.messages);
   }
+
 }

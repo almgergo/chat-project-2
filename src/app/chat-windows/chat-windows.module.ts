@@ -8,6 +8,7 @@ import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatMessagesComponent } from './chat-window/chat-messages/chat-messages.component';
 import { ChatInputComponent } from './chat-window/chat-input/chat-input.component';
 import { FormsModule } from '@angular/forms';
+import { ChatSyncService } from './cockpit/chat-sync-service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   declarations: [CockpitComponent, ChatTabsComponent, ChatWindowComponent, ChatMessagesComponent, ChatInputComponent],
-  exports: [CockpitComponent]
+  exports: [CockpitComponent],
+  providers: [ChatSyncService]
 })
 export class ChatWindowsModule { }
