@@ -13,6 +13,6 @@ export class AppComponent {
   topics: Topic[];
 
   constructor(private userService: UserService) {
-    this.userService.registerUser();
+    const i = this.userService.userId;
   }
 }

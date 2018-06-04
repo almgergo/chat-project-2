@@ -17,12 +17,20 @@ export class UserService {
         this._userId = uid;
     }
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        console.log(localStorage.getItem('userId'));
+        if (localStorage.getItem('userId') != null) {
+            this.userId = parseInt(localStorage.getItem('userId'), 10);
+        }
+     }
 
     registerUser() {
         this.http.get<number>('/api/user/register').subscribe(data => {
             this.userId = data;
+            localStorage.setItem('userId', this.userId.toString());
             console.log(this.userId);
         });
+
+
     }
 }
