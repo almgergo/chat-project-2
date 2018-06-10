@@ -40,16 +40,19 @@ span.span-button:hover {
 }
 
 .topic-form {
-    height: 80px;
+    height: 15%;
 }
 
 .topic-panel {
+    max-height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 550px;
 }
 
+
 .search-grid {
+    height: 80%;
+    overflow-y: auto;
     display: grid;
     grid-template-columns: 50% 50%;
 }
@@ -57,5 +60,9 @@ span.span-button:hover {
 @media only screen and (max-width:1050px) {
     .search-grid {
         grid-template-columns: 100%;
+    }
+
+    .topic-panel {
+        max-height:100%;
     }
 }

@@ -28,7 +28,7 @@
         id="partnerGenderDropdown" ngbDropdownToggle>
           {{ targetGenderButtonText() }}
       </button>
-      <app-multi-select (checkedValues)="filter.preferredGender = $event" [tooltip]="'Partner gender'" [values]="genders"></app-multi-select>
+      <app-multi-select (checkedValues)="filter.preferredGender = $event" [tooltip]="'Partner gender'" [values]="genders" [selectedValues]="filter.preferredGender"></app-multi-select>
     </div>
   </div>
 </form>

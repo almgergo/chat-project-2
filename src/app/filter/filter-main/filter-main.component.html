@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-start navbar">
 
-  <div class="p-2" ngbDropdown #userDrop="ngbDropdown" (mouseenter)="openDropdown(userDrop, userMenuItem)" (mouseleave)=" closeWithDelay(userDrop, userMenuItem, termUser$)">
+  <div class="p-2" ngbDropdown #userDrop="ngbDropdown" (mouseenter)="openDropdown(userDrop, userMenuItem)" (mouseleave)="closeWithDelay(userDrop, userMenuItem, termUser$)">
     <button class="btn btn-outline-success" id="dropdownUserInfo" ngbDropdownToggle>Your information</button>
     <div ngbDropdownMenu aria-labelledby="dropdownUserInfo">
       <div class="card-body">
@@ -19,7 +19,10 @@
   </div>
 
   <div class="p-2 ml-auto">
-    <button class="btn btn-success" id="startSearch" (click)="startSearch()">Start search</button>
+    <button class="btn btn-success" id="clearFiltersButton" (click)="clearFilters()">Clear filters</button>
+  </div>
+  <div class="p-2 ml-auto">
+    <button class="btn btn-success" id="startSearchButton" (click)="startSearch()">Start search</button>
   </div>
 
 </div>

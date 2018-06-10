@@ -1,9 +1,9 @@
 <div class="split">
-  <div style="height: 10%">
+  <div class="chat-tab" >
     <app-chat-tabs [chatTabs]="chatTabs" (activeTab)="changeActiveTab($event)"></app-chat-tabs>
   </div>
 
-  <div *ngIf="activeTab.id > -1" style="height: 80%">
+  <div class="chat-window" *ngIf="activeTab.id > -1">
     <app-chat-window [chatTab]="activeTab" (sendUnsyncedMessages)="sendMessage($event)"></app-chat-window>
   </div>
 </div>

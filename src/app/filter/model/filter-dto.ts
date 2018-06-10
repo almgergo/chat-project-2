@@ -18,5 +18,20 @@ export class FilterDto {
         this.userAge = startAge;
         this.preferredAgeMax = max;
         this.preferredAgeMin = min;
+        this.userCity = '';
+        this.preferredCity = '';
+    }
+
+    public clear() {
+        this.topics = [];
+
+        this.userGender = null;
+        this.userAge = 20;
+        this.userCity = '';
+
+        this.preferredAgeMax = 30;
+        this.preferredAgeMin = 20;
+        this.preferredCity = '';
+        this.preferredGender = [];
     }
 }

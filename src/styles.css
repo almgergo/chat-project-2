@@ -10,20 +10,11 @@
     margin-top:20px;
     margin-bottom: 20px;
     outline: none;
-    height: 720px;
+    height: 760px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .auto-height {
     height: 100%;
 }
-
-div.content {
-    max-height: 800px;
-    margin-top: 30px;
-    border-width: 1px;
-    border-color: black;
-    border-style: solid;
-    box-shadow:  2px 2px 4px #888888;
-  }

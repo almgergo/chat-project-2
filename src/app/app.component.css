@@ -1,22 +1,8 @@
-/* Split the screen in half */
 div.app-page {
   margin-top: 5px;
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media only screen and (max-width: 1600px) {
-  div.app-page {
-    margin-right:20px;
-    margin-left:20px;
-  }
-}
-
-
-div.row>div {
-  margin-left: 50px;
-  margin-right: 50px;
 }
 
 div.col {
@@ -28,4 +14,57 @@ div.menu {
   border-color: black;
   border-style: solid;
   box-shadow: 10px 10px 8px #888888;
+}
+
+
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+
+
+div.main-content {
+  max-height: 1000px;
+  margin-top: 30px;
+  border-width: 1px;
+  border-color: black;
+  border-style: solid;
+  box-shadow:  2px 2px 4px #888888;
+}
+
+
+div.content-panel {
+  margin: 0px;
+  padding: 20px;
+}
+
+
+div.content-panel-top {
+  border-right: 1px black solid;
+}
+
+@media only screen and (max-width:1050px) {
+  div.main-content {
+      max-height: 2000px;
+  }
+
+  .content-grid {
+    grid-template-columns: 100%;
+  }
+
+  div.content-panel-top {
+    border-bottom: 1px black solid;
+    border-right: none;
+  }
+}
+
+
+@media only screen and (max-width: 1600px) {
+  div.app-page {
+    margin-right:20px;
+    margin-left:20px;
+  }
+
 }

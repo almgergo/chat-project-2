@@ -2,7 +2,7 @@
   <div class="form-group">
     <div class="form-group ">
       <label for="exampleInputEmail1">Your age</label>
-      <app-age-input [minAge]="minAge"></app-age-input>
+      <app-age-input [minAge]="minAge" [maxAge]="maxAge" [startAge]="filter.userAge" (ageChanged)="filter.userAge = $event"></app-age-input>
     </div>
   </div>
 
@@ -17,4 +17,3 @@
       </div>
     </div>
   </div>
-

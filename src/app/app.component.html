@@ -3,13 +3,13 @@
     <app-filter-main [topics]=topics></app-filter-main>
   </div>
 
-  <div class="content">
-    <div class="row">
-      <div class="col-5" style="margin-right: 0px;">
+  <div class="main-content">
+    <div class="content-grid">
+      <div class="content-panel content-panel-top">
         <app-topic-page (topicsChanged)="topics = $event"></app-topic-page>
       </div>
 
-      <div class="col">
+      <div class="content-panel">
         <app-cockpit></app-cockpit>
       </div>
     </div>

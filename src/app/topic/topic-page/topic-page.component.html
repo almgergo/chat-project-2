@@ -2,7 +2,7 @@
 (mouseup)="resetCursor()">
 
   <form class="topic-form">
-    <div>
+    <div >
       <h5 for="topic-search" class="topic-category"><i class="fas fa-search" style="color: darkblue"></i> Search for a topic</h5>
       <input id="topic-search" type="search" [formControl]="searchField" [value]="searchInput"
       placeholder="Gaming, traveling, music..." class="form-control" (mouseup)="selectInput()"
@@ -15,12 +15,11 @@
 
   <hr/>
 
-
     <!-- <div class="col">
       <button type="button" class="btn btn-danger" ><i class="fas fa-ban"></i></button>
     </div> -->
   <div class="search-grid">
-    <div class="col">
+    <div>
       <h5 for="topic-search" class="topic-category"> <i class="fa fa-plus" style="color: darkred"></i> Available topics</h5>
       <ng-container *ngIf="inactiveTopics.length > 0; else no_inactive_found">
         <div  #availableTopics class="topic-panel my-animation">
@@ -37,12 +36,12 @@
     </div>
     <!-- <hr/> -->
 
-    <div class="col">
+    <div>
       <h5 for="topic-search" class="topic-category"> <i class="fa fa-check" aria-hidden="true" style="color: green"> </i> Selected topics</h5>
       <ng-container *ngIf="activeTopics.length > 0; else no_active_found">
         <div class="topic-panel">
           <div [@growShrinkStaticStart] *ngFor="let topic of activeTopics" tabindex="1">
-            <div class="row" style="overflow:auto;">
+            <div class="row">
               <div class="col highlight-remove" [ngClass]="{'highlight-remove-selected': topic.selected}" (click)="removeTopic(topic)">
                 <label class="topic-enum col-form-label ">{{topic.name}} ({{topic.searchCount}})</label>
               </div>

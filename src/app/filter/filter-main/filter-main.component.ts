@@ -32,7 +32,15 @@ import { Topic } from '../../commons/model/topic-dto';
 
 })
 export class FilterMainComponent implements OnInit {
-  filter: FilterDto = new FilterDto(20, 20, 30);
+  private _filter: FilterDto;
+
+  get filter(): FilterDto {
+    return this._filter;
+  }
+
+  set filter(f: FilterDto) {
+    this._filter = f;
+  }
 
   @Input() topics: Topic[];
 
@@ -49,6 +57,12 @@ export class FilterMainComponent implements OnInit {
   termUser$ = new Subject<{dropdown: NgbDropdown, menuItem: MenuItem}>();
 
   constructor() {
+    if (localStorage.getItem('userId') != null) {
+      this.filter =  JSON.parse(localStorage.getItem('chatFilter'));
+      if (!this.filter) {
+        this.filter = new FilterDto(20, 20, 30);
+      }
+    }
 
 
     this.termTarget$
@@ -86,5 +100,10 @@ export class FilterMainComponent implements OnInit {
 
   startSearch() {
     console.log(this.topics, this.filter);
+    localStorage.setItem('chatFilter', JSON.stringify(this.filter));
+  }
+
+  clearFilters() {
+    this.filter = new FilterDto(20, 20, 30);
   }
 }

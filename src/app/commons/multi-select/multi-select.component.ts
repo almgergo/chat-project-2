@@ -9,7 +9,8 @@ export class MultiSelectComponent implements OnInit {
 
   @Input() values: any[];
   @Input() tooltip: string;
-  selectedValues: any[] = [];
+  @Input() selectedValues: any[] = [];
+
 
   @Output() checkedValues: EventEmitter<any[]> = new EventEmitter();
 
